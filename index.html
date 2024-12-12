@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    
+    <title>GENTECH</title>
     <style>
     </style>
 </head>
@@ -23,8 +23,8 @@
     <nav>
         <div class="hamburger" id="hamburger">&#9776;</div>
         <div class="nav-links" id="navLinks">
-            <a href="#imei" id="imeiTab" onclick="changeTabTitle('IMEI')" onclick="showTab('imei')">IMEI Service</a>
-            <a href="#server" id="serverTab" onclick="changeTabTitle('Server Service')" onclick="showTab('server')">Server Service</a>
+            <a href="#imei" id="imeiTab" onclick="showTab('imei')">IMEI Service</a>
+            <a href="#server" id="serverTab" onclick="showTab('server')">Server Service</a>
             <a href="#toolrent" id="toolrentTab" onclick="showTab('toolrent')">Tool Rent Service</a>
             <a href="#cellphoneparts" id="cellphonepartsTab" onclick="showTab('cellphoneparts')">Cellphone Parts</a>
             <a href="#history" id="historyTab" onclick="showTab('history')">Transaction History</a>
@@ -367,6 +367,8 @@
         </div>
     </div>
 
+    <script src="https://example.com/script.js"></script>
+
     <script>
         function showTab(tabId) {
             document.querySelectorAll('.items').forEach(tab => {
@@ -401,16 +403,6 @@
             alert('Searching for: ' + query);s
         }
     </script>
-
-    <script>
-        function changeTabTitle(tabName) {
-          document.title = `gentech.site/#${tabName.toLowerCase()}`;
-    
-          // Highlight active link
-          document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-          event.target.classList.add('active');
-        }
-      </script>
 
     <!--script>
         // Check if user is logged in and display login modal if not
