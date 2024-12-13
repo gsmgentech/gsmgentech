@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/Gen.png">
+    <title>GENTECH</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#imei" id="imeiTab" onclick="showTab('imei')">IMEI Service</a>
+            <a href="#server" id="serverTab" onclick="showTab('server')">Server Service</a>
+            <a href="#toolrent" id="toolrentTab" onclick="showTab('toolrent')">Tool Rent Service</a>
+        </div>
+        <div class="search-container">
+            <form class="search-box" onsubmit="performSearch(event)">
+                <input type="text" id="searchQuery" name="searchQuery" placeholder="Search Service" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <span class="close-btn" onclick="closeCheckoutModal()">&times;</span>
+        <h2 style="text-align: center;">CHECKOUT<br>Please provide the following details to proceed with the unlock</h2>
+        <form id="checkoutForm" onsubmit="submitOrder(event)">
+            <input type="text" id="itemName" readonly>
+            <input type="number" id="itemPrice" readonly>
+            <input type="text" id="customerName" placeholder="IMEI MUST BE 15 DIGITS" required>
+            <input type="text" id="customerSN" placeholder="SN NUMBER" required>
+            <input type="number" id="customerContact" placeholder="Contact Number">
+            <input type="email" id="customerEmail" placeholder="Email" required>
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+    <div id="imei" class="items" style="display: none;">
+        <h2>IMEI SERVICE</h2>
+        <div class="item-grid">
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">Samsung FRP remove Worldwide By IMEI</p>
+                <p class="item-price">₱800</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('SAMSUNG FRP REMOVE WORLDWIDE BY IMEI', 800)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">Samsung FRP remove Korea By IMEI</p>
+                <p class="item-price">₱800</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('SAMSUNG FRP REMOVE KOREA BY IMEI', 800)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">Honor FRP remove By Serial (Fast)</p>
+                <p class="item-price">₱3,300</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('HONOR FRP REMOVE WORLDWIDE BY SERIAL FAST', 3300)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">Honor FRP remove By Serial (Slow 1~7 Days)</p>
+                <p class="item-price">₱2,300</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('HONOR FRP REMOVE WORLDWIDE BY SERIAL SLOW', 2300)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">FRP File Premuim<br>Tool</p>
+                <p class="item-price">₱150</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('FRP FILE PREMUIM TOOL BYPASS ICLOUD, PASSCODE DISABLE, BASEBAND BROKEN, MDM', 150)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">FRP File Ramdisk<br>Bypass</p>
+                <p class="item-price">₱250</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('FRP FILE RAMDISK BYPASS PASSCODE, DISABLE IOS 12/16 WITHOUT JAILBREAK', 250)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/imei.jpg" alt="IMEI Item 1">
+                <p class="item-desc">FRP Ramdisk<br>Bypass</p>
+                <p class="item-price">₱250</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('FRP RAMDISK BYPASS PASSCODE / WITHOUT SIGNAL IOS 12/16 WITHOUT JAILBREAK', 250)">Place Order</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="server" class="items" style="display: none;">
+        <h2>SERVER SERVICE</h2>
+        <div class="item-grid">
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 1">
+                <p class="item-desc">UnlockTool<br>(3 Months)</p>
+                <p class="item-price">₱1,200</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL (3 MONTHS)', 1200)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 2">
+                <p class="item-desc">UnlockTool<br>(6 Months)</p>
+                <p class="item-price">₱1,600</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL (6 MONTHS)', 1600)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 3">
+                <p class="item-desc">UnlockTool<br>(12 Months)</p>
+                <p class="item-price">₱2,600</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL (12 MONTHS)', 2600)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 4">
+                <p class="item-desc">Borneo Schematic<br>(3 Months 1User)</p>
+                <p class="item-price">₱900</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (3 MONTHS 1USER)', 900)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 5">
+                <p class="item-desc">Borneo Schematic<br>(3 Months 2User)</p>
+                <p class="item-price">1,200</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (3 MONTHS 2USER)', 1200)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 6">
+                <p class="item-desc">Borneo Schematic<br>(6 Months 1User)</p>
+                <p class="item-price">₱1,600</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (6 MONTHS 1USER)', 1600)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 7">
+                <p class="item-desc">Borneo Schematic<br>(6 Months 2User)</p>
+                <p class="item-price">2,500</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (6 MONTHS 2USER)', 2500)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 8">
+                <p class="item-desc">Borneo Schematic<br>(12 Months 1User)</p>
+                <p class="item-price">₱2,300</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (12 MONTHS 1USER)', 2300)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/borneo.jpg" alt="Item 9">
+                <p class="item-desc">Borneo Schematic<br>(12 Months 2User)</p>
+                <p class="item-price">₱3,200</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('BORNEO SCHEMATIC (12 MONTHS 2USER)', 3200)">Place Order</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolrent" class="items" style="display: none;">
+        <h2>TOOL RENT SERVICE</h2>
+        <div class="item-grid">
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 1">
+                <p class="item-desc">UnlockTool Rent<br>6 Hours</p>
+                <p class="item-price">₱200</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL RENT (6 HOURS)', 200)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 2">
+                <p class="item-desc">UnlockTool Rent<br>8 Hours</p>
+                <p class="item-price">₱250</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL RENT (8 HOURS)', 250)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 3">
+                <p class="item-desc">UnlockTool Rent<br>12 Hours</p>
+                <p class="item-price">₱350</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL RENT (12 HOURS)', 350)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 4">
+                <p class="item-desc">UnlockTool Rent<br>24 Hours</p>
+                <p class="item-price">₱500</p>
+                <a href="#" class="buy-btn" onclick="openCheckoutModal('UNLOCKTOOL RENT (24 HOURS)', 500)">Place Order</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 5">
+                <p class="item-desc">UnlockTool Rent<br>48 Hours</p>
+                <p class="item-price">₱0</p>
+                <a href="#" class="buy-btn" style="color: #FF0000;">Not Available</a>
+            </div>
+            <div class="item">
+                <img src="img/UT.jpg" alt="Item 6">
+                <p class="item-desc">UnlockTool Rent<br>72 Hours</p>
+                <p class="item-price">₱0</p>
+                <a href="#" class="buy-btn" style="color: #FF0000;">Not Available</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>
