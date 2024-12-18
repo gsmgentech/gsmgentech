@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.png">
+    <title>NOTICE</title>
+    <style>
+        /* You can add your styles here if needed */
+    </style>
+</head>
+<body>
+
+    <div id="server" class="items" style="display: none;">
+        <h2>ACCESS DENIED</h2>
+        <h1>
+            <strong style="color: red;">Reason for Block:</strong><br>
+            <span style="color: #FF2400;">
+                Your IP address has been temporarily blocked due to suspicious activity, including potential spamming or invalid actions.<br><br>
+                If you believe this is an error, please contact our support team for assistance.
+            </span><br><br>
+
+            <strong>Blocked IP:</strong><br>
+            <span id="blocked-ip"></span><br><br>
+        </h1>
+
+        <div class="parent-container">
+            <a href="https://www.facebook.com/messages/t/100026102444238" class="button">APPEAL</a>
+        </div>
+    </div>
+
+    <script src="js/server.js"></script>
+    <script>
+        // Function to check if user is blocked
+        function checkUserIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const userIP = data.ip;
+                    // Check if the IP is blocked (assuming a list of blocked IPs)
+                    const blockedIPs = JSON.parse(localStorage.getItem('blockedIPs')) || [];
+                    if (blockedIPs.includes(userIP)) {
+                        document.getElementById('server').style.display = 'block';
+                        document.getElementById('blocked-ip').textContent = userIP;
+                    }
+                })
+                .catch(error => console.error('Error fetching IP address:', error));
+        }
+
+        checkUserIP();
+    </script>
+</body>
+</html>
